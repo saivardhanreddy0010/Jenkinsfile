@@ -3,21 +3,27 @@ pipeline {
 
     stages {
 
+        stage('Checkout') {
+            steps {
+                echo 'Code downloaded from GitHub'
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Building application'
+                bat 'dir'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing application'
+                bat 'if exist index.html (echo Test PASSED) else (exit /b 1)'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application'
+                echo 'Application ready for deployment'
             }
         }
     }
